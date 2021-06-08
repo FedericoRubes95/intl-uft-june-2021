@@ -8,3 +8,4 @@ AIUtil("input", "Password").Type "Mercury"
 AIUtil.FindTextBlock("SIGN IN").Click
 AIUtil("profile").Click
 AIUtil.FindTextBlock("Sign out").Click
+
