@@ -46,15 +46,15 @@
     	int reportLevelInTree;
         HP.ST.Fwk.ReportCreator.QTPEngine.QTPEngineReportCreator reportCreator;
     	
-    	public BindDirection bind_dir9 = null;
-        public BindDirection bind_dir10 = null;
+    	public BindDirection bind_dir1 = null;
+        public BindDirection bind_dir2 = null;
+        public BindDirection bind_dir3 = null;
         public HP.ST.Ext.BasicActivities.DataCursorActivity DataCursorActivity12 = null;
-        public BindDirection bind_dir11 = null;
+        public BindDirection bind_dir4 = null;
         public HP.ST.Fwk.SOAReplayAPI.DataHandling.CursorMovementPolicy DataCursorActivity12_Policy = null;
-        public BindDirection bind_dir12 = null;
-        public BindDirection bind_dir13 = null;
-        public BindDirection bind_dir14 = null;
-        public BindDirection bind_dir15 = null;
+        public BindDirection bind_dir5 = null;
+        public BindDirection bind_dir6 = null;
+        public BindDirection bind_dir7 = null;
         
         public IEnumerable<FeaturesGroup> LicensedFeatures
         {
@@ -110,7 +110,6 @@
             _flow.Sequence7 = new HP.ST.Fwk.RunTimeFWK.CompositeActivities.Sequence(_context,"Sequence7");
             _flow.StServiceCallActivity4 = new HP.ST.Ext.WebServicesActivities.StServiceCallActivity(_context,"StServiceCallActivity4");
             _flow.StServiceCallActivity5 = new HP.ST.Ext.WebServicesActivities.StServiceCallActivity(_context,"StServiceCallActivity5");
-            _flow.SetTestVariableActivity6 = new HP.ST.Ext.BasicActivities.SetTestVariableActivity(_context,"SetTestVariableActivity6");
             _flow.DataFetchActivity8.Comment = @"";
             _flow.DataFetchActivity8.IconPath = @"";
             _flow.DataFetchActivity8.AssemblyPath = @"AddIns\ServiceTest\BaseDataProviders\HP.ST.Ext.CustomDataProviders.dll";
@@ -159,40 +158,51 @@
             this.Activities.Add (_flow.Loop2);
             _flow.DataExporterActivity10.Comment = @"";
             _flow.DataExporterActivity10.IconPath = @"";
-            VTDPropertyInfoBase pi17 = new VTDPropertyInfoBase("OutTable");
-            VTDBaseGetter binding_getter9 = new VTDObjectGetter(pi17);
-            VTDPropertyInfoBase pi18 = new VTDPropertyInfoBase("Data");
-            VTDBaseSetter binding_setter9 = new VTDObjectSetter(pi18);
-            binding_setter9 = new StringFormaterDecorator(binding_setter9,"{Step.DataFetchActivity8.OutTable}");
-            bind_dir9 = new BindDirection(_flow.DataFetchActivity8,binding_getter9,binding_setter9,BindTargetType.ToInProperty);
-            _flow.DataExporterActivity10.InDirections.Add(bind_dir9);
+            VTDPropertyInfoBase pi1 = new VTDPropertyInfoBase("OutTable");
+            VTDBaseGetter binding_getter1 = new VTDObjectGetter(pi1);
+            VTDPropertyInfoBase pi2 = new VTDPropertyInfoBase("Data");
+            VTDBaseSetter binding_setter1 = new VTDObjectSetter(pi2);
+            binding_setter1 = new StringFormaterDecorator(binding_setter1,"{Step.DataFetchActivity8.OutTable}");
+            bind_dir1 = new BindDirection(_flow.DataFetchActivity8,binding_getter1,binding_setter1,BindTargetType.ToInProperty);
+            _flow.DataExporterActivity10.InDirections.Add(bind_dir1);
             this.Activities.Add (_flow.DataExporterActivity10);
             _flow.DataExporterCloseActivity11.Comment = @"";
             _flow.DataExporterCloseActivity11.IconPath = @"";
             this.Activities.Add (_flow.DataExporterCloseActivity11);
+            XmlDocument EndActivity3_ExecutionOutputParameters_Document = new XmlDocument();
+            EndActivity3_ExecutionOutputParameters_Document.PreserveWhitespace = true;
+            EndActivity3_ExecutionOutputParameters_Document.LoadXml(
+@"<Arguments><FlightNumber>{Step.OutputProperties.StServiceCallActivity5.Body.CreateFlightOrderResponse.CreateFlightOrderResult.OrderNumber}</FlightNumber></Arguments>");
+            _flow.EndActivity3.ExecutionOutputParameters = EndActivity3_ExecutionOutputParameters_Document;
             _flow.EndActivity3.Comment = @"";
             _flow.EndActivity3.IconPath = @"AddIns\ServiceTest\BasicActivities\toolbox_code_activity.png";
             _flow.EndActivity3.Name = @"End";
+            VTDPropertyInfoBase pi3 = new VTDPropertyInfoBase("OutputEnvelope","/*[local-name(.)='Envelope'][1]/*[local-name(.)='Body'][1]/*[local-name(.)='CreateFlightOrderResponse'][1]/*[local-name(.)='CreateFlightOrderResult'][1]/*[local-name(.)='OrderNumber'][1]");
+            VTDBaseGetter binding_getter2 = new VTDXPathGetter(pi3,XmlTypeCode.Int);
+            VTDPropertyInfoBase pi4 = new VTDPropertyInfoBase("ExecutionOutputParameters","/*[local-name(.)='Arguments'][1]/*[local-name(.)='FlightNumber'][1]");
+            VTDBaseSetter binding_setter2 = new VTDXPathSetter(pi4,XmlTypeCode.Float);
+            bind_dir2 = new BindDirection(_flow.StServiceCallActivity5,binding_getter2,binding_setter2,BindTargetType.ToInProperty);
+            _flow.EndActivity3.InDirections.Add(bind_dir2);
             this.Activities.Add (_flow.EndActivity3);
             _flow.DataDisconnectActivity9.Comment = @"";
             _flow.DataDisconnectActivity9.IconPath = @"";
-            VTDPropertyInfoBase pi19 = new VTDPropertyInfoBase("OutTable");
-            VTDBaseGetter binding_getter10 = new VTDObjectGetter(pi19);
-            VTDPropertyInfoBase pi20 = new VTDPropertyInfoBase("Data");
-            VTDBaseSetter binding_setter10 = new VTDObjectSetter(pi20);
-            binding_setter10 = new StringFormaterDecorator(binding_setter10,"{Step.DataFetchActivity8.OutTable}");
-            bind_dir10 = new BindDirection(_flow.DataFetchActivity8,binding_getter10,binding_setter10,BindTargetType.ToInProperty);
-            _flow.DataDisconnectActivity9.InDirections.Add(bind_dir10);
+            VTDPropertyInfoBase pi5 = new VTDPropertyInfoBase("OutTable");
+            VTDBaseGetter binding_getter3 = new VTDObjectGetter(pi5);
+            VTDPropertyInfoBase pi6 = new VTDPropertyInfoBase("Data");
+            VTDBaseSetter binding_setter3 = new VTDObjectSetter(pi6);
+            binding_setter3 = new StringFormaterDecorator(binding_setter3,"{Step.DataFetchActivity8.OutTable}");
+            bind_dir3 = new BindDirection(_flow.DataFetchActivity8,binding_getter3,binding_setter3,BindTargetType.ToInProperty);
+            _flow.DataDisconnectActivity9.InDirections.Add(bind_dir3);
             this.Activities.Add (_flow.DataDisconnectActivity9);
             this.DataCursorActivity12.Comment = @"";
             this.DataCursorActivity12.IconPath = @"";
-            VTDPropertyInfoBase pi21 = new VTDPropertyInfoBase("OutTable");
-            VTDBaseGetter binding_getter11 = new VTDObjectGetter(pi21);
-            VTDPropertyInfoBase pi22 = new VTDPropertyInfoBase("InTable");
-            VTDBaseSetter binding_setter11 = new VTDObjectSetter(pi22);
-            binding_setter11 = new StringFormaterDecorator(binding_setter11,"{Step.DataFetchActivity8.OutTable}");
-            bind_dir11 = new BindDirection(_flow.DataFetchActivity8,binding_getter11,binding_setter11,BindTargetType.ToInProperty);
-            this.DataCursorActivity12.InDirections.Add(bind_dir11);
+            VTDPropertyInfoBase pi7 = new VTDPropertyInfoBase("OutTable");
+            VTDBaseGetter binding_getter4 = new VTDObjectGetter(pi7);
+            VTDPropertyInfoBase pi8 = new VTDPropertyInfoBase("InTable");
+            VTDBaseSetter binding_setter4 = new VTDObjectSetter(pi8);
+            binding_setter4 = new StringFormaterDecorator(binding_setter4,"{Step.DataFetchActivity8.OutTable}");
+            bind_dir4 = new BindDirection(_flow.DataFetchActivity8,binding_getter4,binding_setter4,BindTargetType.ToInProperty);
+            this.DataCursorActivity12.InDirections.Add(bind_dir4);
             this.DataCursorActivity12_Policy.StartPosition = CursorStartPosition.FirstRecord;
             this.DataCursorActivity12_Policy.StartAtSpecificRow = 1;
             this.DataCursorActivity12_Policy.StartCondition.ColumnName = "";
@@ -214,7 +224,6 @@
             _flow.Sequence7.Name = @"Sequence7";
             _flow.Sequence7.Activities.Add (_flow.StServiceCallActivity4);
             _flow.Sequence7.Activities.Add (_flow.StServiceCallActivity5);
-            _flow.Sequence7.Activities.Add (_flow.SetTestVariableActivity6);
             XmlDocument StServiceCallActivity4_InputEnvelope_Document = new XmlDocument();
             StServiceCallActivity4_InputEnvelope_Document.PreserveWhitespace = true;
             StServiceCallActivity4_InputEnvelope_Document.LoadXml(
@@ -236,21 +245,21 @@
             _flow.StServiceCallActivity4.IsAsync=false;
             _flow.StServiceCallActivity4.TargetNamespace=@"http://tempuri.org/";
             _flow.StServiceCallActivity4.ListenOnPort = (int)0;
-            XmlDocument StServiceCallActivity4_ExpectedOutputProperties_Document = new XmlDocument();
-            StServiceCallActivity4_ExpectedOutputProperties_Document.PreserveWhitespace = true;
-            StServiceCallActivity4_ExpectedOutputProperties_Document.LoadXml(
-@"<Envelope xmlns=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:p1=""http://www.w3.org/2001/XMLSchema-instance""><Body><GetFlightsResponse xmlns=""HP.SOAQ.SampleApp""><GetFlightsResult><Flight><Airline p1:nil=""true"" /><ArrivalCity p1:nil=""true"" /><ArrivalTime p1:nil=""true"" /><DepartureCity p1:nil=""true"" /><DepartureTime p1:nil=""true"" /><FlightNumber /></Flight></GetFlightsResult></GetFlightsResponse></Body></Envelope>");
-            _flow.StServiceCallActivity4.ExpectedOutputProperties = StServiceCallActivity4_ExpectedOutputProperties_Document;
-            XmlDocument StServiceCallActivity4_ExpectedFaultProperties_Document = new XmlDocument();
-            StServiceCallActivity4_ExpectedFaultProperties_Document.PreserveWhitespace = true;
-            StServiceCallActivity4_ExpectedFaultProperties_Document.LoadXml(
-@"<tns:Envelope xmlns:tns=""http://schemas.xmlsoap.org/soap/envelope/""><tns:Body><tns:Fault><faultcode /><faultstring /></tns:Fault></tns:Body></tns:Envelope>");
-            _flow.StServiceCallActivity4.ExpectedFaultProperties = StServiceCallActivity4_ExpectedFaultProperties_Document;
             XmlDocument StServiceCallActivity4_ExpectedOutputAttachments_Document = new XmlDocument();
             StServiceCallActivity4_ExpectedOutputAttachments_Document.PreserveWhitespace = true;
             StServiceCallActivity4_ExpectedOutputAttachments_Document.LoadXml(
 @"<OutputAttachments />");
             _flow.StServiceCallActivity4.ExpectedOutputAttachments = StServiceCallActivity4_ExpectedOutputAttachments_Document;
+            XmlDocument StServiceCallActivity4_ExpectedFaultProperties_Document = new XmlDocument();
+            StServiceCallActivity4_ExpectedFaultProperties_Document.PreserveWhitespace = true;
+            StServiceCallActivity4_ExpectedFaultProperties_Document.LoadXml(
+@"<tns:Envelope xmlns:tns=""http://schemas.xmlsoap.org/soap/envelope/""><tns:Body><tns:Fault><faultcode /><faultstring /></tns:Fault></tns:Body></tns:Envelope>");
+            _flow.StServiceCallActivity4.ExpectedFaultProperties = StServiceCallActivity4_ExpectedFaultProperties_Document;
+            XmlDocument StServiceCallActivity4_ExpectedOutputProperties_Document = new XmlDocument();
+            StServiceCallActivity4_ExpectedOutputProperties_Document.PreserveWhitespace = true;
+            StServiceCallActivity4_ExpectedOutputProperties_Document.LoadXml(
+@"<Envelope xmlns=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns:p1=""http://www.w3.org/2001/XMLSchema-instance""><Body><GetFlightsResponse xmlns=""HP.SOAQ.SampleApp""><GetFlightsResult><Flight><Airline p1:nil=""true"" /><ArrivalCity p1:nil=""true"" /><ArrivalTime p1:nil=""true"" /><DepartureCity p1:nil=""true"" /><DepartureTime p1:nil=""true"" /><FlightNumber /></Flight></GetFlightsResult></GetFlightsResponse></Body></Envelope>");
+            _flow.StServiceCallActivity4.ExpectedOutputProperties = StServiceCallActivity4_ExpectedOutputProperties_Document;
             set_StServiceCallActivity4_checkpoints(_flow.StServiceCallActivity4);
             XmlDocument StServiceCallActivity5_InputEnvelope_Document = new XmlDocument();
             StServiceCallActivity5_InputEnvelope_Document.PreserveWhitespace = true;
@@ -273,53 +282,41 @@
             _flow.StServiceCallActivity5.IsAsync=false;
             _flow.StServiceCallActivity5.TargetNamespace=@"http://tempuri.org/";
             _flow.StServiceCallActivity5.ListenOnPort = (int)0;
-            VTDPropertyInfoBase pi23 = new VTDPropertyInfoBase("n_of_tickets");
-            VTDBaseGetter binding_getter12 = new VTDObjectGetter(pi23);
-            VTDPropertyInfoBase pi24 = new VTDPropertyInfoBase("InputEnvelope","/*[local-name(.)='Envelope'][1]/*[local-name(.)='Body'][1]/*[local-name(.)='CreateFlightOrder'][1]/*[local-name(.)='FlightOrder'][1]/*[local-name(.)='NumberOfTickets'][1]");
-            VTDBaseSetter binding_setter12 = new VTDXPathSetter(pi24,XmlTypeCode.Int);
-            bind_dir12 = new BindDirection(this.DataCursorActivity12,binding_getter12,binding_setter12,BindTargetType.ToInProperty);
-            _flow.StServiceCallActivity5.InDirections.Add(bind_dir12);
-            VTDPropertyInfoBase pi25 = new VTDPropertyInfoBase("OutputEnvelope","/*[local-name(.)='Envelope'][1]/*[local-name(.)='Body'][1]/*[local-name(.)='GetFlightsResponse'][1]/*[local-name(.)='GetFlightsResult'][1]/*[local-name(.)='Flight'][{Array0}]/*[local-name(.)='FlightNumber'][1]");
-            VTDBaseGetter binding_getter13 = new VTDXPathGetter(pi25,XmlTypeCode.Int);
-            binding_getter13 = new XPathGetterDecorator(binding_getter13,"{Array0}",1);
-            VTDPropertyInfoBase pi26 = new VTDPropertyInfoBase("InputEnvelope","/*[local-name(.)='Envelope'][1]/*[local-name(.)='Body'][1]/*[local-name(.)='CreateFlightOrder'][1]/*[local-name(.)='FlightOrder'][1]/*[local-name(.)='FlightNumber'][1]");
-            VTDBaseSetter binding_setter13 = new VTDXPathSetter(pi26,XmlTypeCode.Int);
-            bind_dir13 = new BindDirection(_flow.StServiceCallActivity4,binding_getter13,binding_setter13,BindTargetType.ToInProperty);
-            _flow.StServiceCallActivity5.InDirections.Add(bind_dir13);
-            VTDPropertyInfoBase pi27 = new VTDPropertyInfoBase("InputEnvelope","/*[local-name(.)='Envelope'][1]/*[local-name(.)='Body'][1]/*[local-name(.)='GetFlights'][1]/*[local-name(.)='FlightDate'][1]");
-            VTDBaseGetter binding_getter14 = new VTDXPathGetter(pi27,XmlTypeCode.DateTime);
-            VTDPropertyInfoBase pi28 = new VTDPropertyInfoBase("InputEnvelope","/*[local-name(.)='Envelope'][1]/*[local-name(.)='Body'][1]/*[local-name(.)='CreateFlightOrder'][1]/*[local-name(.)='FlightOrder'][1]/*[local-name(.)='DepartureDate'][1]");
-            VTDBaseSetter binding_setter14 = new VTDXPathSetter(pi28,XmlTypeCode.DateTime);
-            bind_dir14 = new BindDirection(_flow.StServiceCallActivity4,binding_getter14,binding_setter14,BindTargetType.ToInProperty);
-            _flow.StServiceCallActivity5.InDirections.Add(bind_dir14);
-            XmlDocument StServiceCallActivity5_ExpectedOutputProperties_Document = new XmlDocument();
-            StServiceCallActivity5_ExpectedOutputProperties_Document.PreserveWhitespace = true;
-            StServiceCallActivity5_ExpectedOutputProperties_Document.LoadXml(
-@"<Envelope xmlns=""http://schemas.xmlsoap.org/soap/envelope/""><Body><CreateFlightOrderResponse xmlns=""HP.SOAQ.SampleApp""><CreateFlightOrderResult><OrderNumber>2</OrderNumber></CreateFlightOrderResult></CreateFlightOrderResponse></Body></Envelope>");
-            _flow.StServiceCallActivity5.ExpectedOutputProperties = StServiceCallActivity5_ExpectedOutputProperties_Document;
-            XmlDocument StServiceCallActivity5_ExpectedFaultProperties_Document = new XmlDocument();
-            StServiceCallActivity5_ExpectedFaultProperties_Document.PreserveWhitespace = true;
-            StServiceCallActivity5_ExpectedFaultProperties_Document.LoadXml(
-@"<tns:Envelope xmlns:tns=""http://schemas.xmlsoap.org/soap/envelope/""><tns:Body><tns:Fault><faultcode /><faultstring /></tns:Fault></tns:Body></tns:Envelope>");
-            _flow.StServiceCallActivity5.ExpectedFaultProperties = StServiceCallActivity5_ExpectedFaultProperties_Document;
+            VTDPropertyInfoBase pi9 = new VTDPropertyInfoBase("n_of_tickets");
+            VTDBaseGetter binding_getter5 = new VTDObjectGetter(pi9);
+            VTDPropertyInfoBase pi10 = new VTDPropertyInfoBase("InputEnvelope","/*[local-name(.)='Envelope'][1]/*[local-name(.)='Body'][1]/*[local-name(.)='CreateFlightOrder'][1]/*[local-name(.)='FlightOrder'][1]/*[local-name(.)='NumberOfTickets'][1]");
+            VTDBaseSetter binding_setter5 = new VTDXPathSetter(pi10,XmlTypeCode.Int);
+            bind_dir5 = new BindDirection(this.DataCursorActivity12,binding_getter5,binding_setter5,BindTargetType.ToInProperty);
+            _flow.StServiceCallActivity5.InDirections.Add(bind_dir5);
+            VTDPropertyInfoBase pi11 = new VTDPropertyInfoBase("OutputEnvelope","/*[local-name(.)='Envelope'][1]/*[local-name(.)='Body'][1]/*[local-name(.)='GetFlightsResponse'][1]/*[local-name(.)='GetFlightsResult'][1]/*[local-name(.)='Flight'][{Array0}]/*[local-name(.)='FlightNumber'][1]");
+            VTDBaseGetter binding_getter6 = new VTDXPathGetter(pi11,XmlTypeCode.Int);
+            binding_getter6 = new XPathGetterDecorator(binding_getter6,"{Array0}",1);
+            VTDPropertyInfoBase pi12 = new VTDPropertyInfoBase("InputEnvelope","/*[local-name(.)='Envelope'][1]/*[local-name(.)='Body'][1]/*[local-name(.)='CreateFlightOrder'][1]/*[local-name(.)='FlightOrder'][1]/*[local-name(.)='FlightNumber'][1]");
+            VTDBaseSetter binding_setter6 = new VTDXPathSetter(pi12,XmlTypeCode.Int);
+            bind_dir6 = new BindDirection(_flow.StServiceCallActivity4,binding_getter6,binding_setter6,BindTargetType.ToInProperty);
+            _flow.StServiceCallActivity5.InDirections.Add(bind_dir6);
+            VTDPropertyInfoBase pi13 = new VTDPropertyInfoBase("InputEnvelope","/*[local-name(.)='Envelope'][1]/*[local-name(.)='Body'][1]/*[local-name(.)='GetFlights'][1]/*[local-name(.)='FlightDate'][1]");
+            VTDBaseGetter binding_getter7 = new VTDXPathGetter(pi13,XmlTypeCode.DateTime);
+            VTDPropertyInfoBase pi14 = new VTDPropertyInfoBase("InputEnvelope","/*[local-name(.)='Envelope'][1]/*[local-name(.)='Body'][1]/*[local-name(.)='CreateFlightOrder'][1]/*[local-name(.)='FlightOrder'][1]/*[local-name(.)='DepartureDate'][1]");
+            VTDBaseSetter binding_setter7 = new VTDXPathSetter(pi14,XmlTypeCode.DateTime);
+            bind_dir7 = new BindDirection(_flow.StServiceCallActivity4,binding_getter7,binding_setter7,BindTargetType.ToInProperty);
+            _flow.StServiceCallActivity5.InDirections.Add(bind_dir7);
             XmlDocument StServiceCallActivity5_ExpectedOutputAttachments_Document = new XmlDocument();
             StServiceCallActivity5_ExpectedOutputAttachments_Document.PreserveWhitespace = true;
             StServiceCallActivity5_ExpectedOutputAttachments_Document.LoadXml(
 @"<OutputAttachments />");
             _flow.StServiceCallActivity5.ExpectedOutputAttachments = StServiceCallActivity5_ExpectedOutputAttachments_Document;
+            XmlDocument StServiceCallActivity5_ExpectedFaultProperties_Document = new XmlDocument();
+            StServiceCallActivity5_ExpectedFaultProperties_Document.PreserveWhitespace = true;
+            StServiceCallActivity5_ExpectedFaultProperties_Document.LoadXml(
+@"<tns:Envelope xmlns:tns=""http://schemas.xmlsoap.org/soap/envelope/""><tns:Body><tns:Fault><faultcode /><faultstring /></tns:Fault></tns:Body></tns:Envelope>");
+            _flow.StServiceCallActivity5.ExpectedFaultProperties = StServiceCallActivity5_ExpectedFaultProperties_Document;
+            XmlDocument StServiceCallActivity5_ExpectedOutputProperties_Document = new XmlDocument();
+            StServiceCallActivity5_ExpectedOutputProperties_Document.PreserveWhitespace = true;
+            StServiceCallActivity5_ExpectedOutputProperties_Document.LoadXml(
+@"<Envelope xmlns=""http://schemas.xmlsoap.org/soap/envelope/""><Body><CreateFlightOrderResponse xmlns=""HP.SOAQ.SampleApp""><CreateFlightOrderResult><OrderNumber>2</OrderNumber></CreateFlightOrderResult></CreateFlightOrderResponse></Body></Envelope>");
+            _flow.StServiceCallActivity5.ExpectedOutputProperties = StServiceCallActivity5_ExpectedOutputProperties_Document;
             set_StServiceCallActivity5_checkpoints(_flow.StServiceCallActivity5);
-            _flow.SetTestVariableActivity6.VariableKey = @"Order_Number";
-            _flow.SetTestVariableActivity6.VariableValue = @"{Step.OutputProperties.StServiceCallActivity5.Body.CreateFlightOrderResponse.CreateFlightOrderResult.OrderNumber}";
-            _flow.SetTestVariableActivity6.Comment = @"";
-            _flow.SetTestVariableActivity6.IconPath = @"AddIns\ServiceTest\BasicActivities\toolbox_setenv.png";
-            _flow.SetTestVariableActivity6.Name = @"Set Test Variable6";
-            VTDPropertyInfoBase pi29 = new VTDPropertyInfoBase("OutputEnvelope","/*[local-name(.)='Envelope'][1]/*[local-name(.)='Body'][1]/*[local-name(.)='CreateFlightOrderResponse'][1]/*[local-name(.)='CreateFlightOrderResult'][1]/*[local-name(.)='OrderNumber'][1]");
-            VTDBaseGetter binding_getter15 = new VTDXPathGetter(pi29,XmlTypeCode.Int);
-            VTDPropertyInfoBase pi30 = new VTDPropertyInfoBase("VariableValue");
-            VTDBaseSetter binding_setter15 = new VTDObjectSetter(pi30);
-            binding_setter15 = new StringFormaterDecorator(binding_setter15,"{Step.OutputProperties.StServiceCallActivity5.Body.CreateFlightOrderResponse.CreateFlightOrderResult.OrderNumber}");
-            bind_dir15 = new BindDirection(_flow.StServiceCallActivity5,binding_getter15,binding_setter15,BindTargetType.ToInProperty);
-            _flow.SetTestVariableActivity6.InDirections.Add(bind_dir15);
             
         }
         

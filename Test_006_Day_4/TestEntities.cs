@@ -28,7 +28,6 @@ using System;
     public HP.ST.Fwk.RunTimeFWK.CompositeActivities.Sequence Sequence7 = null;
     public HP.ST.Ext.WebServicesActivities.StServiceCallActivity StServiceCallActivity4 = null;
     public HP.ST.Ext.WebServicesActivities.StServiceCallActivity StServiceCallActivity5 = null;
-    public HP.ST.Ext.BasicActivities.SetTestVariableActivity SetTestVariableActivity6 = null;
     
     }
     
